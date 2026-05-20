@@ -1,25 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BOS-01-LARGE</title>
-    <meta http-equiv="refresh" content="300">
+    <title>Shibuya</title>
+
     <style>
         body {
             margin: 0;
             background-color: black;
             overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         img {
+            position: absolute;
             width: 100vw;
             height: 100vh;
             object-fit: cover;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
         }
+
+        img.active {
+            opacity: 1;
+        }
+
+        /* TEXTO OVERLAY */
+        .overlay {
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            color: white;
+            z-index: 10;
+        }
+
+        .title {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            font-size: 2rem;
+            margin-top: 10px;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 5%;
+            left: 5%;
+            font-size: 1.5rem;
+            color: white;
+        }
+
     </style>
 </head>
+
 <body>
 
-    <img src="shibuya.jpg">
+    <!-- IMÁGENES -->
+    <img src="shibuya1.jpg" class="active">
+    <img src="shibuya2.jpg">
+    <img src="shibuya3.jpg">
+
+    <!-- TEXTO SUPERIOR -->
+    <div class="overlay">
+        <div class="title" id="titleText">Welcome</div>
+        <div class="subtitle" id="subtitleText">Boston Office</div>
+    </div>
+    <script>
+        let index = 0;
+        const images = document.querySelectorAll("img");
+
+        const titles = [
+            "Welcome",
+            "Collaboration Starts Here",
+            "Innovation in Motion"
+        ];
+
+        const subtitles = [
+            "Boston Office",
+            "Microsoft Teams Rooms",
+            "New Balance Workplace"
+        ];
+
+        function changeSlide() {
+            // quitar imagen actual
+            images[index].classList.remove("active");
+
+            // avanzar índice
+            index = (index + 1) % images.length;
+
+            // activar nueva imagen
+            images[index].classList.add("active");
+
+            // cambiar texto
+            document.getElementById("titleText").innerText = titles[index];
+            document.getElementById("subtitleText").innerText = subtitles[index];
+        }
+
+        setInterval(changeSlide, 8000);
+    </script>
 
 </body>
 </html>
