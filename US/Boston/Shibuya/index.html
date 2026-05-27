@@ -70,18 +70,6 @@
         let index = 0;
         const images = document.querySelectorAll("img");
 
-        const titles = [
-            "Welcome",
-            "Collaboration Starts Here",
-            "Innovation in Motion"
-        ];
-
-        const subtitles = [
-            "Boston Office",
-            "Microsoft Teams Rooms",
-            "New Balance Workplace"
-        ];
-
         function changeSlide() {
             // quitar imagen actual
             images[index].classList.remove("active");
@@ -92,9 +80,6 @@
             // activar nueva imagen
             images[index].classList.add("active");
 
-            // cambiar texto
-            document.getElementById("titleText").innerText = titles[index];
-            document.getElementById("subtitleText").innerText = subtitles[index];
         }
 
         setInterval(changeSlide, 8000);
